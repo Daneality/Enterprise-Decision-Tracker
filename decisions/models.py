@@ -1,6 +1,8 @@
 from django.db import models
 
 class Decision(models.Model):
+    """Model definition for Decision."""
+
     STATUS_CHOICES = [
         ('Pending', 'Pending'),
         ('Completed', 'Completed'),
@@ -14,6 +16,7 @@ class Decision(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Evaluation(models.Model):
+    """Model definition for Evaluation."""
     decision = models.OneToOneField(Decision, on_delete=models.CASCADE, related_name='evaluation')
     goal_met = models.BooleanField()
     comments = models.TextField(blank=True)

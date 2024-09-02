@@ -10,6 +10,8 @@ from rest_framework.validators import UniqueValidator
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
+    """Serializer for user registration"""
+
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
@@ -25,11 +27,12 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id", "username", "email", "password", "confirm_password", "date_joined", "admin")
+        read_only_fields = ("id", "date_joined")
 
     def validate(self, attrs):
         if attrs.get('password') != attrs.get('confirm_password'):
             raise serializers.ValidationError("Those passwords don't match.")
-        del attrs['confirm_password']
+        attrs.pop('confirm_password')
         attrs['password'] = make_password(attrs['password'])
         return attrs
     
@@ -44,6 +47,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
 
 class UserLoginSerializer(serializers.Serializer):
+    """Serializer for user login"""
+
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)
 
@@ -66,9 +71,17 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError(self.error_messages['invalid_credentials'])
 
 
-class TokenSerializer(serializers.ModelSerializer):
-    auth_token = serializers.CharField(source='key')
+class UserSerializer(serializers.ModelSerializer):
+    """Serializer for read-only user model"""
+    class Meta:
+        model = User
+        fields = ("id", "username", "email", "date_joined", "is_superuser")
+        read_only_fields = fields
+
+class UserWithTokenSerializer(serializers.Serializer):
+    """Serializer for user with token"""
+    auth_token = serializers.CharField()
+    user = UserSerializer()
 
     class Meta:
-        model = Token
-        fields = ("auth_token", "created")
+        fields = ['auth_token', 'user']
