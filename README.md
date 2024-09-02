@@ -37,7 +37,7 @@ Python 3.10 was used during development.
 5. Run the Django server.
 
     ```bash
-    python manage.py runserver
+    python manage.py migrate --noinput && python manage.py runserver
     ```
 The application should now be running at `http://localhost:8000`.
 With Api's base URL at `localhost:8000/api`.
