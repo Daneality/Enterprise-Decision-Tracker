@@ -3,6 +3,8 @@ Enterprise Decision Tracker API. Built with Django REST Framework.
 
 ## Installation Guide
 
+The application is hosted on a development server, as i didn't see a need  to a production server for the testing purposes.
+
 ### Local Installation
 
 The local version uses SQLite as the database.
@@ -59,8 +61,8 @@ The Docker version uses a full-blown PostgreSQL database, which runs in a separa
     docker-compose up --build
     ```
 
-The application should now be running at `http://localhost:8000`.
-With Api's base URL at `localhost:8000/api`.
+The development server should now be running at `http://localhost:8000`.
+With Api's base URL at `localhost:8000/api` and Swagger UI at `http://localhost:8000/swagger`
 I have **intentionally** added .env file to the repo to simplify testing.
 
 ## Documentation
