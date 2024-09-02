@@ -28,7 +28,7 @@ Python 3.10 was used during development.
     pip install -r requirements.txt
     ```
 
-4. You can easily run tests using pytest in the local    version to simplify testing :)
+4. You can run tests using pytest, should simplify testing :)
     
     ```bash
     pytest
@@ -53,7 +53,7 @@ The Docker version uses a full-blown PostgreSQL database, which runs in a separa
     cd Enterprise-Decision-Tracker
     ```
 
-2. Build and run the Docker containers.
+2. Build and run the docker-compose configuration.
 
     ```bash
     docker-compose up --build
