@@ -42,7 +42,7 @@ Python 3.10 was used during development.
     python manage.py migrate --noinput && python manage.py runserver
     ```
 The application should now be running at `http://localhost:8000`.
-With Api's base URL at `localhost:8000/api`.
+With Api's base URL at `localhost:8000/api` and Swagger UI at `http://localhost:8000/swagger`.
 
 ### Docker Installation
 
@@ -62,7 +62,7 @@ The Docker version uses a full-blown PostgreSQL database, which runs in a separa
     ```
 
 The development server should now be running at `http://localhost:8000`.
-With Api's base URL at `localhost:8000/api` and Swagger UI at `http://localhost:8000/swagger`
+With Api's base URL at `localhost:8000/api` and Swagger UI at `http://localhost:8000/swagger`.
 I have **intentionally** added .env file to the repo to simplify testing.
 
 ## Documentation
